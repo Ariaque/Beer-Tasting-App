@@ -1,0 +1,28 @@
+01/01/2022 10:37:36	 userId:5	 @::1	LOG_ERROR : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 13
+INSERT INTO beer_style (style, aroma, appearance, flavor, body, comments, story, ingredients, styles_comparison, commercial_examples)
+                    VALUES (
+                        '', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                    )
+01/01/2022 10:38:37	 userId:5	 @::1	LOG_ERROR : You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 13
+INSERT INTO beer_style (style, aroma, appearance, flavor, body, comments, story, ingredients, styles_comparison, commercial_examples)
+                    VALUES (
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                        's', 
+                    )

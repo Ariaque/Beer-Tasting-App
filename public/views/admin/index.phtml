@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h2><?php echo adminArea ?></h2>
+                <p><?php echo textAdminArea ?></p>
+            </div>
+            <div class="card-body">
+                <?php
+                if (isset($var->success) and !empty($var->success)) {
+                ?>
+                <div class="alert alert-success" role="alert">
+                    <?php echo $var->success ?>
+                </div>
+                <?php
+                }
+                ?>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::TITLE ?>"><?php echo title ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::TITLE ?>"
+                            name="<?php echo BeerStyle::TITLE ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::AROMA ?>"><?php echo aroma ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::AROMA ?>"
+                            name="<?php echo BeerStyle::AROMA ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::APPEARANCE ?>"><?php echo appearance ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::APPEARANCE ?>"
+                            name="<?php echo BeerStyle::APPEARANCE ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::FLAVOR ?>"><?php echo flavor ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::FLAVOR ?>"
+                            name="<?php echo BeerStyle::FLAVOR ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::BODY ?>"><?php echo body ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::BODY ?>"
+                            name="<?php echo BeerStyle::BODY ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::COMMENTS ?>"><?php echo comments ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::COMMENTS ?>"
+                            name="<?php echo BeerStyle::COMMENTS ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::STORY ?>"><?php echo story ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::STORY ?>"
+                            name="<?php echo BeerStyle::STORY ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::INGREDIENTS ?>"><?php echo ingredients ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::INGREDIENTS ?>"
+                            name="<?php echo BeerStyle::INGREDIENTS ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="<?php echo BeerStyle::STYLES_COMPARISON ?>"><?php echo stylesComparison ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::STYLES_COMPARISON ?>"
+                            name="<?php echo BeerStyle::STYLES_COMPARISON ?>" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label
+                            for="<?php echo BeerStyle::COMMERCIAL_EXAMPLES ?>"><?php echo commercialExamples ?></label>
+                        <textarea class="form-control" id="<?php echo BeerStyle::COMMERCIAL_EXAMPLES ?>"
+                            name="<?php echo BeerStyle::COMMERCIAL_EXAMPLES ?>" rows="3" required></textarea>
+                    </div>
+                    <button class="btn btn-primary"><?php echo save ?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<fieldset>
+    <div class="form-floating mb-3">
+        <input type="text" placeholder="Title" class="form-control requiredInput required" id="tastingTitle"
+            name="<?php echo Tasting::TITLE ?>" />
+        <label for="tastingTitle"><?php echo title ?></label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" placeholder="Beer name" class="form-control required" id="beerName"
+            name="<?php echo Tasting::BEER_NAME ?>" />
+        <label for="beerName"><?php echo beerName ?></label>
+    </div>
+    <div class="form-floating mb-3">
+        <select class="form-control" id="beerStyleId" name="<?php echo Tasting::BEER_STYLE_ID ?>">
+            <label for="beerStyleId">Category</label>
+            <?php
+            foreach ($var->beerStyles as $beerStyle) {
+            ?>
+            <option value="<?php echo $beerStyle->id ?>"><?php echo $beerStyle->title ?></option>
+            <?php
+            }
+            ?>
+        </select>
+    </div>
+</fieldset>

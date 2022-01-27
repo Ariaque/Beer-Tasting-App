@@ -1,0 +1,123 @@
+<style>
+.hidden {
+    display: none;
+}
+
+button {
+    width: 100%;
+    margin: 5px;
+}
+
+.buttons>input {
+    width: 100%;
+    margin: 5px;
+}
+
+.card {
+    width: 100%;
+}
+
+textarea {
+    height: 100px;
+}
+</style>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h2><?php echo newTasting ?></h2>
+                <?php echo textNewTasting ?>
+            </div>
+            <div class="card-body">
+                <?php
+                if (!empty($var->errors)) {
+                    foreach ($var->errors as $error) {
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <?php echo $error; ?>
+                </div>
+                <?php
+                    }
+                } else if (!empty($var->success) and $var->success != false) {
+                    ?>
+                <div class="alert alert-success" role="alert">
+                    <p> <?php echo $var->success; ?>
+                        <br>
+                        <?php echo "<a href=" . $var->link . ">" . link . "</a>" ?>
+                    </p>
+                </div>
+                <?php
+                }
+                ?>
+                <form id="form" action="" method="post">
+                    <!--step 1-->
+                    <?php echo App::get_partial(PARTIAL_ADD_TASTING_FORM_1, array("beerStyles" => $var->beerStyles)); ?>
+                    <!--step 2-->
+                    <?php echo App::get_partial(PARTIAL_ADD_TASTING_FORM_2, array()); ?>
+                    <!--step 3-->
+                    <?php echo App::get_partial(PARTIAL_ADD_TASTING_FORM_3, array()); ?>
+                    <!--step 4-->
+                    <?php echo App::get_partial(PARTIAL_ADD_TASTING_FORM_4, array()); ?>
+                    <!--step 5-->
+                    <?php echo App::get_partial(PARTIAL_ADD_TASTING_FORM_5, array()); ?>
+                    <div class="d-grid mb-2">
+                        <div class="buttons">
+                            <button class="btn btn-secondary btnNext"><?php echo next ?></button>
+                            <button class="btn btn-secondary btnPrev hidden"><?php echo previous ?></button>
+                            <input type="submit" value="<?php echo save ?>" class="btn btn-primary btnSubmit hidden" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    var $fieldsets = $('form fieldset');
+    $('.btnNext').click(function(e) {
+        e.preventDefault();
+        $fieldsets.filter(':visible').slideUp().next().slideDown(shButtons);
+    });
+
+    $('.btnPrev').click(function(e) {
+        e.preventDefault();
+        $fieldsets.filter(':visible').slideUp().prev().slideDown(shButtons);
+    });
+
+    function shButtons() {
+        console.log($fieldsets.filter(':visible').index());
+        if ($fieldsets.filter(':visible').index() > 0) {
+            $('.btnPrev').show();
+        } else {
+            $('.btnPrev').hide();
+        }
+        console.log(($fieldsets.filter(':visible').index() === $fieldsets.length));
+        if ($fieldsets.filter(':visible').index() === $fieldsets.length - 1) {
+            $('.btnSubmit').show();
+            $('.btnNext').hide();
+        } else {
+            $('.btnSubmit').hide();
+            $('.btnNext').show();
+        }
+    }
+
+    $(".btnSubmit").click(function(e) {
+        e.preventDefault();
+        var isFormValid = true;
+        $(".required").each(function() {
+            if ($.trim($(this).val()).length == 0) {
+                $(this).addClass("warning");
+                isFormValid = false;
+            } else {
+                $(this).removeClass("warning");
+            }
+        });
+        if (!isFormValid) {
+            alert("Please fill in all the required fields (indicated by *)");
+        } else {
+            $("#form").submit();
+        }
+    });
+});
+</script>

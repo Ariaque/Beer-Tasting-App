@@ -1,0 +1,1 @@
+ALTER TABLE tasting CHANGE `total_score` total DECIMAL(3,1)

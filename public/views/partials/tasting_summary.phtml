@@ -1,0 +1,53 @@
+<!-- exemple affichage carte -->
+<div class="row justify-content-center align-items-center">
+    <?php
+    if (isset($var->userTastings)) {
+        $userTastings = $var->userTastings;
+    ?>
+    <!-- columns for  tasting cards -->
+    <div class="col-md-10 col-xs-12">
+        <div class="row">
+            <?php
+                foreach ($userTastings as $userTasting) {
+                ?>
+            <div class="col-md-3 col-xs-12 top">
+                <div class="card h-100 score" data-score="<?php echo $userTasting->score['score'] / 5 ?>"
+                    data-type="card">
+                    <!-- Product details-->
+                    <div class="card-body">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder"><?php echo $userTasting->beerStyleTitle ?></h5>
+                            <hr />
+                            <h4 class="fw-bolder"><?php echo $userTasting->beerName ?></h4>
+                            <hr />
+                            <div class="stars" data-rating="<?php echo $userTasting->score['score'] / 10 ?>"
+                                data-num-stars="5">
+                            </div>
+                            <hr />
+                            <h4 class=" fw-bolder"><?php echo App::convertDate($userTasting->createdAt) ?></h4>
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer">
+                        <div class="text-center"><a class="btn btn-primary"
+                                href="<?php echo str_replace("#id#", $userTasting->id, PAGE_TASTING) ?>"><?php echo view ?></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php
+                }
+                ?>
+        </div>
+    </div>
+    <!-- columns for  the arrow -->
+    <div class="col-md-2 col-xs-12 justify-content-center">
+        <a class="change_page" href="<?php echo PAGE_USER_TASTINGS_MANAGEMENT ?>">
+            <i class="bi bi-arrow-right-circle-fill fa-6x"></i>
+        </a>
+    </div>
+    <?php
+    }
+    ?>
+</div>

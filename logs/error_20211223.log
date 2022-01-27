@@ -1,0 +1,2 @@
+23/12/2021 11:40:26	 userId:75	 @::1	LOG_ERROR : Unknown column 'Dieu' in 'field list'
+UPDATE user SET user.first_name = Dieu-Don, user.last_name = isidore WHERE user_id= 75

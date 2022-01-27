@@ -1,0 +1,152 @@
+<fieldset class="hidden">
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="<?php echo Tasting::AROMA_COMMENT ?>"
+                    name="<?php echo Tasting::AROMA_COMMENT ?>" rows="2" data-toggle="tooltip" data-placement="top"
+                    title="<?php echo AROMA_MESSAGE ?>"></textarea>
+                <label for="<?php echo Tasting::AROMA_COMMENT ?>"><?php echo aroma ?></label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <select class="form-control required" id="<?php echo Tasting::AROMA_SCORE ?>"
+                    name="<?php echo Tasting::AROMA_SCORE ?>">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                    <option value=11>11</option>
+                    <option value=12>12</option>
+                </select>
+                <label for="<?php echo Tasting::AROMA_SCORE ?>"><?php echo score ?></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="<?php echo Tasting::APPEARANCE_COMMENT ?>"
+                    name="<?php echo Tasting::APPEARANCE_COMMENT ?>" rows="2" data-toggle="tooltip" data-placement="top"
+                    title="<?php echo APPEARANCE_MESSAGE ?>"></textarea>
+                <label for="<?php echo Tasting::APPEARANCE_COMMENT ?>"><?php echo appearance ?></label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <select class="form-control required" id="<?php echo Tasting::APPEARANCE_SCORE ?>"
+                    name="<?php echo Tasting::APPEARANCE_SCORE ?>">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                </select>
+                <label for="<?php echo Tasting::APPEARANCE_SCORE ?>"><?php echo score ?></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <textarea class="form-control " id="<?php echo Tasting::FLAVOR_COMMENT ?>"
+                    name="<?php echo Tasting::FLAVOR_COMMENT ?>" rows="2" data-toggle="tooltip" data-placement="top"
+                    title="<?php echo FLAVOR_MESSAGE ?>"></textarea>
+                <label for="<?php echo Tasting::FLAVOR_COMMENT ?>"><?php echo flavor ?></label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <select class="form-control required" id="<?php echo Tasting::FLAVOR_SCORE ?>"
+                    name="<?php echo Tasting::FLAVOR_SCORE ?>">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                    <option value=11>11</option>
+                    <option value=12>12</option>
+                    <option value=13>13</option>
+                    <option value=14>14</option>
+                    <option value=15>15</option>
+                    <option value=16>16</option>
+                    <option value=17>17</option>
+                    <option value=18>18</option>
+                    <option value=19>19</option>
+                    <option value=20>20</option>
+                </select>
+                <label for="<?php echo Tasting::FLAVOR_SCORE ?>"><?php echo score ?></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="<?php echo Tasting::MOUTHFEEL_COMMENT ?>"
+                    name="<?php echo Tasting::MOUTHFEEL_COMMENT ?>" rows="2" data-toggle="tooltip" data-placement="top"
+                    title="<?php echo MOUTHFEEL_MESSAGE ?>"></textarea>
+                <label for="<?php echo Tasting::MOUTHFEEL_COMMENT ?>"><?php echo mouthfeel ?></label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <select class="form-control required" id="<?php echo Tasting::MOUTHFEEL_SCORE ?>"
+                    name="<?php echo Tasting::MOUTHFEEL_SCORE ?>">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                <label for="<?php echo Tasting::MOUTHFEEL_SCORE ?>"><?php echo score ?></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" id="<?php echo Tasting::OVERALL_COMMENT ?>"
+                    name="<?php echo Tasting::OVERALL_COMMENT ?>" rows="2" data-toggle="tooltip" data-placement="top"
+                    title="<?php echo OVERALL_MESSAGE ?>"></textarea>
+                <label for="<?php echo Tasting::OVERALL_COMMENT ?>"><?php echo overallImpression ?></label>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-floating mb-3">
+                <select class="form-control required" id="<?php echo Tasting::OVERALL_SCORE ?>"
+                    name="<?php echo Tasting::OVERALL_SCORE ?>">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                    <option value=6>6</option>
+                    <option value=7>7</option>
+                    <option value=8>8</option>
+                    <option value=9>9</option>
+                    <option value=10>10</option>
+                </select>
+                <label for="<?php echo Tasting::OVERALL_SCORE ?>"><?php echo score ?></label>
+            </div>
+        </div>
+    </div>
+</fieldset>

@@ -1,0 +1,36 @@
+<fieldset class="hidden">
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <label class="form-check-label"
+                for="<?php echo Tasting::STYLISTIC_ACCURACY ?>"><?php echo stylisticAccuracy ?></label>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <input name=" <?php echo Tasting::STYLISTIC_ACCURACY ?>" id="<?php echo Tasting::STYLISTIC_ACCURACY ?>"
+                type="range" class="form-range" min="1" max="5" step="1" required data-toggle="tooltip"
+                data-placement="top"
+                title="<?php echo STYLISTIC_MESSAGE_START . ' ' . TO . ' ' . STYLISTIC_MESSAGE_END ?>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <label class=" form-check-label"
+                for="<?php echo Tasting::TECHNICAL_MERIT ?>"><?php echo technicalMerit ?></label>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <input name=" <?php echo Tasting::TECHNICAL_MERIT ?>" id=" <?php echo Tasting::TECHNICAL_MERIT ?>"
+                class="form-range" min="1" max="5" step="1" type="range" required data-toggle="tooltip"
+                data-placement="top"
+                title="<?php echo TECHNICALMERIT_MESSAGE_START . ' ' . TO . ' ' . TECHNICALMERIT_MESSAGE_END ?>">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <label class=" form-check-label" for="<?php echo Tasting::INTANGIBLES ?>"><?php echo intangibles ?></label>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <input name=" <?php echo Tasting::INTANGIBLES ?>" id="<?php echo Tasting::INTANGIBLES ?>" type="range"
+                class="form-range" min="1" max="5" step="1" required data-toggle="tooltip" data-placement="top"
+                title="<?php echo INTANGIBLES_MESSAGE_START . ' ' . TO . ' ' . INTANGIBLES_MESSAGE_END ?>">
+        </div>
+    </div>
+</fieldset>

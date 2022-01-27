@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h4 class="text-center maj"><?php echo yourTastings ?></h4>
+            </div>
+            <div class="card-body bg-card">
+                <?php
+                if (empty($var->lastUserTastings) || !isset($var->lastUserTastings)) {
+                    //echo "<p>No tastings</p>";
+                } else {
+                    echo App::get_partial(PARTIAL_TASTING, array("userTastings" => $var->lastUserTastings));
+                ?>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row top">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h4 class="text-center maj"><?php echo lastTastings ?></h4>
+            </div>
+            <div class="card-body bg-card">
+                <?php
+                if (empty($var->lastTastings) || !isset($var->lastTastings)) {
+                    //echo "<p>No tastings</p>";
+                } else {
+                    echo App::get_partial(PARTIAL_ALL_TASTINGS, array("lastTastings" => $var->lastTastings));
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>

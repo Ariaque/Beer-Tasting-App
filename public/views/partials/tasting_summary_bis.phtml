@@ -1,0 +1,30 @@
+<!-- exemple affichage carte -->
+<div class="row justify-content-center align-items-center">
+    <?php
+    if (isset($var->lastTastings)) {
+        $tastings = $var->lastTastings;
+    ?>
+    <!-- columns for  tasting cards -->
+    <div class="col-md-10 col-xs-12">
+        <div class="row">
+            <?php
+                foreach ($tastings as $tasting) {
+                ?>
+            <div class="col-md-3 col-xs-12 top">
+                <?php echo App::get_partial(PARTIAL_TASTING_CARD, array('tasting' => $tasting)) ?>
+            </div>
+            <?php
+                }
+                ?>
+        </div>
+    </div>
+    <!-- columns for  the arrow -->
+    <div class="col-md-2 col-xs-12 justify-content-center">
+        <a class="change_page" href="<?php echo PAGE_TASTINGS ?>">
+            <i class=" bi bi-arrow-right-circle-fill fa-6x"></i>
+        </a>
+    </div>
+    <?php
+    }
+    ?>
+</div>

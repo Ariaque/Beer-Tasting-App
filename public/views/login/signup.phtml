@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10 col-xl-9 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="alert alert-danger hidden" id="errorContainer" role="alert">
+                </div>
+
+                <div class="alert alert-success hidden" id="successContainer" role="alert">
+                </div>
+                <div class="card-body p-4 p-sm-5">
+                    <h5 class="card-title text-center mb-5 fw-light fs-5"><?php echo signUp ?></h5>
+                    <form id="signupForm" action="" method="POST">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="John"
+                                required>
+                            <label for="floatingInputLastName"><?php echo firstName ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Doe" required>
+                            <label for="floatingInputLastName"><?php echo lastName ?></label>
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="name@example.com" required>
+                            <label for="floatingInputEmail"><?php echo email ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control pr-password" id="password" name="password"
+                                placeholder="Password" data-toggle="password" required>
+                            <label for="floatingPassword"><?php echo password ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="checkbox" onclick="showPassword()"><?php echo showPassword ?>
+                        </div>
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" id="submitBtn"
+                                type="submit"><?php echo signUp ?></button>
+                        </div>
+
+                        <a class="d-block text-center mt-2 small"
+                            href="<?php echo PAGE_SIGNIN ?>"><?php echo okAccount ?></a>
+
+                        <hr class="my-4">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+function showPassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+</script>
+<script>
+$(document).ready(function() {
+    function setupMessagesContainer() {
+        $('#successContainer').empty();
+        $('#successContainer').hide();
+        $('#errorContainer').empty();
+        $('#errorContainer').hide();
+    }
+    setupMessagesContainer();
+    $(".pr-password").passwordRequirements({
+        numCharacters: 8,
+        useLowercase: true,
+        useUppercase: true,
+        useNumbers: true,
+        useSpecial: true
+    });
+    $("#signupForm").submit(function(e) {
+        e.preventDefault();
+        const firstName = $("#firstName").val();
+        const name = $("#name").val();
+        const email = $("#email").val();
+        const password = $("#password").val();
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {
+                "firstName": firstName,
+                "name": name,
+                "email": email,
+                'password': password
+            },
+            dataType: 'json',
+            success: function(feedback) {
+
+                setupMessagesContainer();
+                if (feedback.status == "success") {
+                    $('#successContainer').show();
+                    $('#errorContainer').append("<ul>");
+
+                    $('#successContainer').append(feedback.message);
+                    $('#errorContainer').append("</ul>");
+
+                } else if (feedback.status == "error") {
+                    $('#errorContainer').show();
+                    $('#errorContainer').append("<ul>");
+                    jQuery.each(feedback.message, function(index, item) {
+                        $('#errorContainer').append("<li>" + item + "</li>");
+                    });
+                    $('#errorContainer').append("</ul>");
+                }
+            }
+            /*,
+                        error: function(XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                            alert("Error: " + errorThrown);
+                        }
+                        */
+        })
+    });
+});
+</script>

@@ -1,0 +1,1 @@
+ALTER table user add column is_verified tinyint(1) DEFAULT 0 NOT NULL after created_at

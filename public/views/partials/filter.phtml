@@ -1,0 +1,19 @@
+<?php
+$page = $var->page;
+if ($var->mode == 'visitor') {
+    $link = str_replace("#page#", $var->page, PAGE_TASTINGS_VISITOR_BY_PAGE);
+} else {
+    $link = str_replace("#page#", $var->page, PAGE_TASTINGS_BY_PAGE);
+}
+?>
+<select onChange="window.location.href=this.value" class="form-select sort" aria-label="Filter">
+    <option value="<?php echo $link ?>/newest" selected>
+        <?php echo sort . newest ?></option>
+    <option value="<?php echo $link ?>/oldest">
+        <?php echo sort . oldest ?>
+    </option>
+    <option value="<?php echo $link ?>/best-score">
+        <?php echo sort . bestScore ?></option>
+    <option value="<?php echo $link ?>/lowest-score">
+        <?php echo sort . lowestScore ?></option>
+</select>

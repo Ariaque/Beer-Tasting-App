@@ -1,0 +1,14 @@
+<fieldset class="hidden">
+    <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" id="<?php echo Tasting::IS_BOTTLE_OK ?>"
+            name="<?php echo Tasting::IS_BOTTLE_OK ?>" data-toggle="tooltip" data-placement="top"
+            title="<?php echo BOTTLE_MESSAGE ?>">
+        <label class="form-check-label" for="<?php echo Tasting::IS_BOTTLE_OK ?>"><?php echo bottleInspection ?></label>
+    </div>
+    <div class="form-floating mb-3 shadow-textarea">
+        <textarea class="form-control" id="<?php echo Tasting::BOTTLE_INSPECTION_COMMENT ?>"
+            name="<?php echo Tasting::BOTTLE_INSPECTION_COMMENT ?>" rows="3" data-toggle="tooltip" data-placement="top"
+            title="<?php echo BOTTLE_MESSAGE ?>"></textarea>
+        <label for="<?php echo Tasting::BOTTLE_INSPECTION_COMMENT ?>"><?php echo comments ?></label>
+    </div>
+</fieldset>

@@ -1,0 +1,93 @@
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews -Indexes
+    </IfModule>
+
+
+    ErrorDocument 404                                /index.php?c=errorController 
+    
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+
+
+
+
+    RewriteRule ^account/changePassword               index.php?c=profileController&operation=changePassword [L]
+    RewriteRule ^account/changeUsername               index.php?c=profileController&operation=changeUsername [L]
+
+    RewriteRule ^account/delete                       index.php?c=profileController&operation=deleteAccount [L]
+    RewriteRule ^account                              index.php?c=profileController&operation=viewProfile [L]
+    RewriteRule ^admin                                index.php?c=adminController [L]
+
+    RewriteRule ^beer-styles/delete/(.*)$             index.php?c=beerStyleController&operation=delete&id=$1 [L]
+    RewriteRule ^beer-styles/(.*)$                    index.php?c=beerStyleController&operation=getAll&page=$1 [L]
+    RewriteRule ^beer-styles                          index.php?c=beerStyleController&operation=getAll [L]
+    RewriteRule ^beer-style/(.*)$                     index.php?c=beerStyleController&operation=getBeerStyle&id=$1 [L]
+
+    RewriteRule ^home                                 index.php?c=homeController [L]
+
+    RewriteRule ^dashboard                            index.php?c=dashBoardController [L]
+
+
+
+    RewriteRule ^signin                               index.php?c=loginController&operation=signIn [L]
+    RewriteRule ^signup                               index.php?c=loginController&operation=signUp [L]
+    RewriteRule ^logout                               index.php?c=loginController&operation=logOut [L]
+
+
+    RewriteRule ^tastings/user/(.*)/(.*)$             index.php?c=tastingController&operation=getUserTastings&userId=$1&page=$2 [L]
+
+    RewriteRule ^tastings/user/(.*)$                  index.php?c=tastingController&operation=getUserTastings&userId=$1 [L]
+
+    RewriteRule ^tastings/visitor/(.*)/(.*)$          index.php?c=tastingController&operation=getAllTastings&mode=visitor&page=$1&filter=$2 [L]
+
+    RewriteRule ^tastings/visitor/(.*)$               index.php?c=tastingController&operation=getAllTastings&mode=visitor&page=$1 [L]
+    
+    RewriteRule ^tastings/add                         index.php?c=tastingController&operation=addTasting [L]
+
+    RewriteRule ^tastings/visitor                     index.php?c=tastingController&operation=getAllTastings&mode=visitor [L]
+    
+    RewriteRule ^tastings/(.*)/(.*)$                  index.php?c=tastingController&operation=getAllTastings&page=$1&filter=$2 [L]
+
+    RewriteRule ^tastings/(.*)$                       index.php?c=tastingController&operation=getAllTastings&page=$1 [L]
+    
+    
+    RewriteRule ^tastings                             index.php?c=tastingController&operation=getAllTastings [L]
+
+    RewriteRule ^tasting/delete/(.*)$                 index.php?c=tastingController&operation=deleteTasting&id=$1 [L]
+
+
+    RewriteRule ^tasting/visitor/(.*)$                index.php?c=tastingController&operation=getTastingById&id=$1&mode=visitor [L]
+
+    RewriteRule ^tasting/(.*)$                        index.php?c=tastingController&operation=getTastingById&id=$1 [L]
+
+
+
+    RewriteRule ^tastings                             index.php?c=tastingController&operation=getAllTastings [L]
+
+    RewriteRule ^my-tastings/(.*)$                    index.php?c=tastingController&operation=manageTastings&page=$1 [L]
+
+    RewriteRule ^my-tastings                          index.php?c=tastingController&operation=manageTastings [L]
+
+
+    RewriteRule ^$                                    index.php?c=homeController [L]
+    
+</IfModule>
+
+<IfModule mod_deflate.c>
+    <FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css|html|php|txt|xml)$">
+    SetOutputFilter DEFLATE
+    </FilesMatch>
+</IfModule>
+
+
+SetEnv host eu-cdbr-west-01.cleardb.com
+SetEnv user b20aed084fb8c0
+SetEnv password 24cf5e66
+SetEnv database heroku_3060de8c3a96b87
+
+
+
+

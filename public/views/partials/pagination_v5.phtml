@@ -1,0 +1,45 @@
+<?php
+$count = $var->count;
+$page = $var->page;
+$pages = $var->pages;
+?>
+<div class="">
+    <strong><?php echo (int)$count ?> <?php echo result ?><?php echo ((int)$count > 1) ? 's' : '' ?></strong>
+</div>
+<?php
+if ($count > 0) {
+?>
+<div class="col-lg-6 offset-lg-3 mt-2 d-flex">
+    <ul class="pagination mx-auto">
+        <?php
+            if ($page !== 1) {
+            ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php echo str_replace("#page#", $page - 1, PAGE_BEER_STYLES_PAGE) ?>"><?php echo previous ?></a>
+        </li>
+        <?php
+            }
+            ?>
+        <?php for ($i = 1; $i <= $pages; $i++) :
+                if ($i >= 5) {
+                    break;
+                }
+            ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php echo str_replace("#page#", $i, PAGE_BEER_STYLES_PAGE) ?>"><?php echo $i ?></a>
+        </li>
+        <?php endfor; ?>
+        <?php
+            if ($page != $pages) {
+            ?>
+        <li class="page-item"><a class="page-link"
+                href="<?php echo str_replace("#page#", $page + 1, PAGE_BEER_STYLES_PAGE) ?>"><?php echo next ?></a>
+        </li>
+        <?php
+            }
+            ?>
+    </ul>
+    <?php
+}
+    ?>
+</div>

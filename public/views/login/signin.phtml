@@ -1,0 +1,91 @@
+<!-- Alert-->
+<!-- Section-->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card border-0 shadow rounded-3 my-5">
+                <div class="card-body p-4 p-sm-5">
+                    <div class="alert alert-danger hidden" id="errorContainer" role="alert">
+                    </div>
+                    <h5 class="card-title text-center mb-5 fw-light fs-5"><?php echo signIn ?></h5>
+                    <form id="signinForm" action="" method="POST">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com"
+                                name="email" required>
+                            <label for="email"><?php echo email ?></label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="password" placeholder="Password"
+                                name="password" required>
+                            <label for="password"><?php echo password ?></label>
+                        </div>
+
+                        <?php
+                        /** 
+                        if (SITE_URL == URL_PROD) {
+                        ?>
+                        <div class="g-recaptcha form-floating mb-3"
+                            data-sitekey="6LcyDSwdAAAAAFT7QOdQTsZ4hTPnKC3DO-KTJANO"></div>
+                        <?php
+                        } else if (SITE_URL == URL_DEV) {
+                        ?>
+                        <div class="g-recaptcha form-floating mb-3"
+                            data-sitekey="6LcV_ysdAAAAAGWDDP703-b3WU7qiengcMI5aE7g"></div>
+                        <?php
+                        }
+                         */
+                        ?>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary btn-login text-uppercase fw-bold"
+                                type="submit"><?php echo signIn ?></button>
+                        </div>
+
+                        <a href="#"><?php echo forgotPassword ?></a>
+
+                        <hr class="my-4">
+                        <label class="text-center">
+                            <a href="<?php echo PAGE_SIGNUP ?>"><?php echo koAccount ?></a>
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(document).ready(function() {
+    function setupMessagesContainer() {
+        $('#errorContainer').empty();
+        $('#errorContainer').hide();
+    }
+    setupMessagesContainer();
+    $("#signinForm").submit(function(e) {
+        e.preventDefault();
+        const email = $("#email").val();
+        const password = $("#password").val();
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {
+                "email": email,
+                'password': password
+            },
+            dataType: 'json',
+            success: function(feedback) {
+                setupMessagesContainer();
+                if (feedback.status == "success") {
+                    window.location = "<?php echo PAGE_DASHBOARD ?>";
+                } else if (feedback.status == "error") {
+                    $('#errorContainer').show();
+                    $('#errorContainer').append("<ul>");
+                    jQuery.each(feedback.message, function(index, item) {
+                        $('#errorContainer').append("<li>" + item + "</li>");
+                    });
+                    $('#errorContainer').append("</ul>");
+                }
+            }
+        })
+    });
+});
+</script>

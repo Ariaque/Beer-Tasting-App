@@ -1,0 +1,31 @@
+<?php
+$tasting = $var->tasting;
+?>
+<div class="card h-100 score" data-score="<?php echo $tasting->score['score'] / 5 ?>" data-type="card">
+    <!-- Product details-->
+    <div class=" card-body">
+        <div class="text-center">
+            <!-- Product name-->
+            <h5 class="fw-bolder" id="beerCategory"><?php echo $tasting->beerStyleTitle ?></h5>
+            <hr />
+            <h4 class="fw-bolder" id="beerName"><?php echo $tasting->beerName ?></h4>
+            <hr />
+            <h4 class="fw-bolder" id="userName">Par: <?php echo $tasting->userName ?></h4>
+            <hr />
+            <div class="stars" data-rating="<?php echo $tasting->score['score'] / 10 ?>" data-num-stars="5">
+            </div>
+            <hr />
+            <h4 class="fw-bolder" id="date"><?php echo App::convertDate($tasting->createdAt) ?>
+            </h4>
+        </div>
+    </div>
+    <!-- Product actions-->
+    <div class="card-footer" id="boutonShowMore">
+        <?php
+        $link = (isset($_GET['mode'])) ? PAGE_TASTING_VISITOR : PAGE_TASTING;
+        ?>
+        <div class="text-center"><a class="btn btn-primary" id="boutonText"
+                href="<?php echo str_replace("#id#", $tasting->id, $link) ?>"><?php echo view ?></a>
+        </div>
+    </div>
+</div>

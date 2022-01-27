@@ -1,0 +1,6 @@
+20/12/2021 03:14:23	 userId:22	 @::1	LOG_ERROR : Erreur de syntaxe près de 'ORDER BY t.total_at ASC' à la ligne 1
+SELECT * FROM tasting t join user u on t.u_id = u.user_id join beer_style b on t.bs_id = b.beer_style_id LIMIT 0, 10 ORDER BY t.total_at ASC
+20/12/2021 03:16:45	 userId:22	 @::1	LOG_ERROR : Erreur de syntaxe près de 'DSC LIMIT 0, 10' à la ligne 1
+SELECT * FROM tasting t join user u on t.u_id = u.user_id join beer_style b on t.bs_id = b.beer_style_id ORDER BY t.total DSC LIMIT 0, 10
+20/12/2021 03:17:05	 userId:22	 @::1	LOG_ERROR : Erreur de syntaxe près de 'DSC LIMIT 0, 10' à la ligne 1
+SELECT * FROM tasting t join user u on t.u_id = u.user_id join beer_style b on t.bs_id = b.beer_style_id ORDER BY t.total DSC LIMIT 0, 10

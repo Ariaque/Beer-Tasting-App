@@ -1,0 +1,183 @@
+<style>
+    input {
+        padding: 3px;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h2><?php echo account ?></h2>
+                <p> <?php echo textAccount  ?></p>
+            </div>
+            <div class="card-body">
+                <?php echo App::get_partial(PARTIAL_CHANGE_PERSONAL_INFORMATION, array()) ?>
+                <hr>
+                <?php echo App::get_partial(PARTIAL_CHANGE_PASSWORD, array()) ?>
+                <hr>
+                <?php echo App::get_partial(PARTIAL_DELETE_ACCOUNT, array()) ?>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#changePasswordBtn').attr('disabled', true);
+
+        function setupMessagesContainer() {
+            $('#passwordSuccessContainer').empty();
+            $('#passwordSuccessContainer').hide();
+            $('#passwordErrorContainer').empty();
+            $('#passwordErrorContainer').hide();
+        }
+
+        function setupUsernameMessageContainer() {
+            $('#usernameSucessContainer').empty();
+            $('#usernameSucessContainer').hide();
+
+            $('#usernameErrorContainer').empty();
+            $('#usernameErrorContainer').hide();
+        }
+
+        function checkPassword() {
+            var old = $('#oldPassword').val();
+            var newP = $('#newPassword').val();
+            if (old != "" && newP != "") {
+                $('#changePasswordBtn').attr('disabled', false);
+            } else {
+                $('#changePasswordBtn').attr('disabled', true);
+            }
+        }
+
+        $(".pr-password").passwordRequirements({
+            numCharacters: 8,
+            useLowercase: true,
+            useUppercase: true,
+            useNumbers: true,
+            useSpecial: true
+        });
+        $('.btn-update').attr('disabled', true);
+        $("#firstName").on('change', function() {
+            var firstName = $(this).val();
+            $currentFirstName = "<?php echo Session::getConnectedUser()->firstName ?>"
+            if (firstName != $currentFirstName) {
+                $('.btn-update').attr('disabled', false);
+            } else {
+                $('.btn-update').attr('disabled', true);
+            }
+        });
+        $("#lastName").on('change', function() {
+            var lastName = $(this).val();
+            $currentLastName = "<?php echo Session::getConnectedUser()->lastName ?>"
+            if (lastName != $currentLastName) {
+                $('.btn-update').attr('disabled', false);
+            } else {
+                $('.btn-update').attr('disabled', true);
+            }
+        });
+        $("#deleteAccountBtn").click(function(e) {
+            e.preventDefault();
+            if (!confirm("<?php echo deleteAccountConfirmationMessage ?>")) {
+                return false;
+            } else {
+                window.location.href =
+                    "<?php echo PAGE_DELETE_ACCOUNT ?>";
+            }
+        });
+        $("#changePasswordBtn").click(function(e) {
+            e.preventDefault();
+            const oldPassword = $("#oldPassword").val();
+            const newPassword = $("#newPassword").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo PAGE_CHANGE_PASSWORD ?>",
+                data: {
+                    "oldPassword": oldPassword,
+                    'newPassword': newPassword
+                },
+                dataType: 'json',
+                success: function(feedback) {
+                    setupMessagesContainer();
+                    if (feedback.status == "success") {
+                        $('#passwordSuccessContainer').show();
+                        $('#passwordSuccessContainer').append("<ul>");
+                        $('#passwordSuccessContainer').append("<li>" + feedback.message +
+                            "</li>");
+                        $('#passwordSuccessContainer').append("</ul>");
+                    } else if (feedback.status == "error") {
+                        $('#passwordErrorContainer').show();
+                        $('#passwordErrorContainer').append("<ul>");
+                        jQuery.each(feedback.message, function(index, item) {
+                            $('#passwordErrorContainer').append("<li>" + item +
+                                "</li>");
+                        });
+                        $('#passwordErrorContainer').append("</ul>");
+                    }
+                }
+            })
+        });
+
+        $("#changeUserNameBtn").click(function(e) {
+            e.preventDefault();
+            const firstName = $("#firstName").val();
+            const lastName = $("#lastName").val();
+            $.ajax({
+                type: "POST",
+                url: "<?php echo PAGE_CHANGE_USERNAME ?>",
+                data: {
+                    "first_name": firstName,
+                    'last_name': lastName
+                },
+                dataType: 'json',
+                success: function(feedback) {
+                    setupUsernameMessageContainer();
+                    if (feedback.status == "success") {
+                        alert(feedback.message);
+                        location.reload(true);
+                    } else if (feedback.status == "error") {
+                        $('#usernameErrorContainer').show();
+                        $('#usernameErrorContainer').append("<ul>");
+                        jQuery.each(feedback.message, function(index, item) {
+                            $('#usernameErrorContainer').append("<li>" + item +
+                                "</li>");
+                        });
+                        $('#usernameErrorContainer').append("</ul>");
+                    }
+                }
+            })
+        });
+    });
+
+    $(document).on('keyup', '#firstName', function() {
+        var newText = $('#firstName').val();
+        if (newText != "") {
+            $('#firstName').val(newText)
+            $('#firstName').val(newText).trigger('change');
+        }
+    });
+    $(document).on('keyup', '#lastName', function() {
+        var newText = $('#lastName').val();
+        if (newText != "") {
+            $('#lastName').val(newText)
+            $('#lastName').val(newText).trigger('change');
+        }
+    });
+    $(document).on('keyup', '#oldPassword', function() {
+        var old = $('#oldPassword').val();
+        var newP = $('#newPassword').val();
+        if (old != "" && newP != "") {
+            $('#changePasswordBtn').attr('disabled', false);
+        } else {
+            $('#changePasswordBtn').attr('disabled', true);
+        }
+    });
+    $(document).on('keyup', '#newPassword', function() {
+        var old = $('#oldPassword').val();
+        var newP = $('#newPassword').val();
+        if (old != "" && newP != "") {
+            $('#changePasswordBtn').attr('disabled', false);
+        } else {
+            $('#changePasswordBtn').attr('disabled', true);
+        }
+    });
+</script>

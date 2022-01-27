@@ -1,0 +1,4 @@
+19/12/2021 21:20:57	 userId:-	 @::1	LOG_ERROR : Erreur de syntaxe près de 'ORDER BY t.t_created_at DESC LIMIT 0, 2' à la ligne 1
+SELECT * FROM tasting t join user u on t.u_id = u.user_id join beer_style b on t.bs_id = b.beer_style_id where u.user_id =  ORDER BY t.t_created_at DESC LIMIT 0, 2
+19/12/2021 23:45:32	 userId:-	 @::1	LOG_ERROR : Erreur de syntaxe près de 'ORDER BY t.t_created_at DESC LIMIT 0, 10' à la ligne 1
+SELECT * FROM tasting t join user u on t.u_id = u.user_id join beer_style b on t.bs_id = b.beer_style_id where u.user_id =  ORDER BY t.t_created_at DESC LIMIT 0, 10

@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card no-border">
+            <div class="card-header">
+                <h2><?php echo myTastings ?></h2>
+                <p><?php echo textMyTastings ?></p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover table-condensed alignLeft">
+                        <thead>
+                            <tr>
+                                <th scope="col"><?php echo title ?></th>
+                                <th scope="col"><?php echo beerName ?></th>
+                                <th scope="col"><?php echo beerStyle ?></th>
+                                <th scope="col"><?php echo score ?></th>
+                                <th scope="col"><?php echo creationDate ?></th>
+                                <th scope="col"><?php echo actions ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            foreach ($var->tastings as $tasting) {
+                            ?>
+                            <tr class="score" data-type="table" data-score="<?php echo ($tasting->total * 10) / 50 ?>">
+                                <td><?php echo $tasting->title ?></td>
+                                <td><?php echo $tasting->beerName ?></td>
+                                <td><?php echo $tasting->beerStyleTitle ?></td>
+                                <td>
+                                    <div class="stars" data-rating="<?php echo $tasting->total / 10 ?>"
+                                        data-num-stars="5">
+                                    </div>
+                                </td>
+                                <td><?php echo App::convertDate($tasting->createdAt) ?></td>
+                                <td><Strong> <a
+                                            href="<?php echo str_replace("#id#", $tasting->id, PAGE_TASTING) ?>"><?php echo view ?></a>
+                                        |<a class="deleteTastingBtn" href=""><?php echo delete ?></a></Strong>
+                                </td>
+                            </tr>
+                            <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mx-auto">
+                <?php
+                echo App::get_partial(
+                    PARTIAL_PAGINATION_V4,
+                    array(
+                        'pages' => $var->pages,
+                        'count' => $var->count,
+                        'page' => $var->page,
+                    )
+                )
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+$(document).ready(function() {
+    $(".deleteTastingBtn").click(function(e) {
+        e.preventDefault();
+        if (!confirm("<?php echo deleteTastingConfirmationMessage ?>")) {
+            return false;
+        } else {
+            window.location.href =
+                "<?php echo str_replace("#id#", $tasting->id, PAGE_DELETE_TASTING) ?>";
+        }
+    });
+});
+</script>
